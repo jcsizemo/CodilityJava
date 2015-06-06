@@ -1,0 +1,2 @@
+INDEX VERSION 1.127+/Users/John/Documents/Codility/.metadata/.plugins/org.eclipse.jdt.core
+848704976.index

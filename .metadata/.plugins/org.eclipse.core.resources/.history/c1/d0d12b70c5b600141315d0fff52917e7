@@ -1,0 +1,12 @@
+package com.sizemore.codility;
+
+public class Challenge {
+	
+	public Challenge() {
+		
+	}
+
+	public static void main (String[] args) {
+		new Challenge();
+	}
+}
