@@ -1,0 +1,48 @@
+package com.sizemore.codility;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Set;
+import java.util.HashSet;
+
+public class Sulphur implements Problem {
+	
+    public Set<Integer> leaves = new HashSet<Integer>();
+    public List<Node> nodes = new ArrayList<Node>();
+
+	public int sulphur(int[] strengths, int[] weights, int[] parents) {
+		
+		Node root = new Node(Double.POSITIVE_INFINITY)
+
+        for (int i = 0; i < strengths.length; i++) {
+        	
+        }
+        
+        return 0;
+    }
+   
+    class Node {
+       
+        public HashMap<Integer, Integer> childMap = new HashMap<Integer,Integer>();
+        public double strength;
+        public int weight;
+        public int parent;
+       
+        public Node(double strength, int weight, int parent) {
+            this.strength = strength;
+            this.weight = weight;
+            this.parent = parent;
+        }
+        
+        public Node() {}
+    }
+
+	public void execute() {
+
+		int[] A = { 5, 3, 6, 3, 3};
+		int[] B = { 2, 3, 1, 1, 2 };
+		int[] C = { -1, 0, -1, 0, 3 };
+		System.out.println(sulphur(A, B, C));
+	}
+}

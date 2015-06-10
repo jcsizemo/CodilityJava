@@ -1,0 +1,40 @@
+package com.sizemore.codility;
+
+import java.util.Arrays;
+
+public class Chlorum implements Problem {
+	
+	int chlorum(int K, int[] C, int[] D) {
+	        
+	        // need a fast way to check where we are coming from
+	        // need a fast way to check if we're excluding anything we shouldn't
+	        
+	        int[] going = C;
+	        int[] coming = new int[going.length];
+	        
+	        Arrays.fill(coming, -1);
+	        
+	        for (int city : C) {
+	            int dest = C[city];
+	            // make an array of "coming" cities, maybe pick the largest valued city to put
+	            // in the array?
+	        }
+	        
+	        int[] sortedD = new int[D.length];
+	        for (int i = 0; i < D.length; i++) sortedD[i] = D[i];
+	        Arrays.sort(sortedD);
+	        
+	        int lowest = sortedD[0];
+	        int highest = sortedD[]
+	        
+	        return 0;
+	    }
+	}
+
+	
+	public void execute() {
+		
+		int[] A = {1,1,1,1,1,1,0,0,0,0,0};
+		System.out.println(chlorum(3,A,A));
+	}
+}

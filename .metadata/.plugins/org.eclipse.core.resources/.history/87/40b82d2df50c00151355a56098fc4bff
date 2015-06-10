@@ -1,0 +1,28 @@
+package com.sizemore.codility;
+
+public class Chlorum implements Problem {
+	
+	int chlorum(int K, int[] C, int[] D) {
+	        
+	        // need a fast way to check where we are coming from
+	        // need a fast way to check if we're excluding anything we shouldn't
+	        
+	        int[] going = C;
+	        Vector<Vector<Integer>> coming = new Vector<Vector<Integer>>();
+	        
+	        for (int city : C) {
+	            int dest = C[city];
+	            
+	        }
+	        
+	        return 0;
+	    }
+	}
+
+	
+	public void execute() {
+		
+		int[] A = {1,1,1,1,1,1,0,0,0,0,0};
+		System.out.println(chlorum(3,A,A));
+	}
+}

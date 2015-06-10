@@ -1,0 +1,65 @@
+package com.sizemore.codility;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+
+public class Sulphur implements Problem {
+	
+    public List<Node> nodes = new ArrayList<Node>();
+
+	public int sulphur(int[] strengths, int[] weights, int[] parents) {
+		
+		Node root = new Node();
+
+        for (int i = 0; i < strengths.length; i++) {
+        	
+        	nodes.add(new Node(strengths[i] - weights[i], weights[i], parents[i], i));
+        	
+        	if (parents[i] == -1) {
+        		root.childMap.put(i, i);
+        	}
+        	else {
+        		int child = i;
+        		Node parent = nodes.get(root.childMap.get(parents[child]));
+        		root.childMap.put(i,parent.);
+        		
+        		Node parent = parents[child];
+        		while (parent != parents[i]) {
+            		parent = nodes.get(parent).childMap.get(child);
+            		nodes.get(parent).childMap.put(i,parent);
+            		child = parent;
+        		}
+        		
+        	}
+        }
+        
+        return 0;
+    }
+   
+    class Node {
+       
+        public HashMap<Integer, Integer> childMap = new HashMap<Integer,Integer>();
+        public int strength;
+        public int weight;
+        public int parent;
+        public int id;
+       
+        public Node(int strength, int weight, int parent, int id) {
+            this.strength = strength;
+            this.weight = weight;
+            this.parent = parent;
+            this.id = id;
+        }
+        
+        public Node() {}
+    }
+
+	public void execute() {
+
+		int[] A = { 5, 3, 6, 3, 3};
+		int[] B = { 2, 3, 1, 1, 2 };
+		int[] C = { -1, 0, -1, 0, 3 };
+		System.out.println(sulphur(A, B, C));
+	}
+}

@@ -1,0 +1,73 @@
+package com.sizemore.codility;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+
+public class Sulphur implements Problem {
+
+	public int sulphur(int[] strengths, int[] weights, int[] parents) {
+		
+	    List<Node> nodes = new ArrayList<Node>();
+		Node root = new Node();
+
+        for (int i = 0; i < strengths.length; i++) {
+        	
+        	Node child = new Node(strengths[i] - weights[i], weights[i], parents[i], i);
+        	
+        	nodes.add(child);
+        	
+        	if (parents[i] == -1) {
+        		root.childMap.put(i, i);
+        	}
+        	else {
+        		Node parent = nodes.get(root.childMap.get(parents[child.id]));
+        		root.childMap.put(i,parent.id);
+        		parent.strength -= child.weight;
+        		if (parent.strength < 0) return i - 1;
+        		
+        		if (parent.id == parents[i])
+        			parent.childMap.put(child.id, child.id);
+        		else {
+        			parent.childMap.put(child.id, child.parent);
+            		
+        			while (parent.id != parents[i]) {
+        				parent = nodes.get(parent.childMap.get(child.id));
+        				if (parent.id != parents[i]) parent.childMap.put(child.id, child.parent);
+                		parent.strength -= child.weight;
+                		if (parent.strength < 0) return i - 1;
+        			}
+        			parent.childMap.put(child.id, child.id);
+        		}
+        	}
+        }
+        
+        return strengths.length;
+    }
+   
+    class Node {
+       
+        public HashMap<Integer, Integer> childMap = new HashMap<Integer,Integer>();
+        public int strength;
+        public int weight;
+        public int parent;
+        public int id;
+       
+        public Node(int strength, int weight, int parent, int id) {
+            this.strength = strength;
+            this.weight = weight;
+            this.parent = parent;
+            this.id = id;
+        }
+        
+        public Node() {}
+    }
+
+	public void execute() {
+
+		int[] A = { 5, 3, 6, 3, 3};
+		int[] B = { 2, 3, 1, 1, 2 };
+		int[] C = { -1, 0, -1, 0, 3 };
+		System.out.println(sulphur(A, B, C));
+	}
+}
